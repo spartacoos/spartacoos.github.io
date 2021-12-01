@@ -7,6 +7,7 @@
 
 #### Software
 - [Test blog (empty)](https://spartacoos.github.io/org/presentation.html)
+- [27 Days of JAX](https://spartacoos.github.io/JAX/jax_challenge.html)
 
 #### Philosophy
 - Plausible mechanisms for the self-limiting nature of intelligence: internal vs external filters
