@@ -6,7 +6,7 @@
 ### Blogs / Essays / Articles
 
 #### Software
-- Journey into Embedded programming using Rust
+- [Test blog (empty)](https://spartacoos.github.io/org/presentation.html)
 
 #### Philosophy
 - Plausible mechanisms for the self-limiting nature of intelligence: internal vs external filters
