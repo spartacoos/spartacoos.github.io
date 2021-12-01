@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-09-07 Tue 18:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI in Parasolid</title>
+<meta name="author" content="Carlo Pecora" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+/* Base */
+html,
+
+
+body {
+  background-color: #634f70;/*#222;*/
+    min-height: 100%;#800080
+    line-height: 1.5;
+}
+
+body {
+    color: #fafafa;
+    font-family: "Courier New";
+}
+
+::selection {
+    background-color:  #eb5ced;
+    color: white;
+}
+
+/* Responsive content positioning */
+@media only screen and (min-width: 1020px) /* Large screens */
+{
+    body{
+        padding: 10vh 25vw;
+    }
+}
+
+@media only screen and (max-width: 1020px) and (min-width: 750px) /* Small screens */
+{
+    body{
+        padding: 5vh 10vw;
+    }
+}
+
+@media only screen and (max-width: 750px) /* Small screens */
+{
+    body{
+        padding: 2vh 5vw;
+    }
+}
+
+/* Headers */
+h1{font-size: 2.5rem;
+ font-family: neon;
+  }
+h2{font-size: 1.7rem;
+ font-family: neon;
+  }
+h1 > .subtitle, h3, h4, h5, h6{font-size: 1.3rem;
+ font-family: neon;
+
+}
+
+.title{
+  font-family: neon;
+  color: #FB4264;/*#984fc9;*//*#FB4264;*/
+  font-size: 9vw;
+  line-height: 9vw;
+  text-shadow: 0 0 4vw #F40A35;/*#c90af4;*//*#F40A35;*/
+}
+
+.title {
+  animation: neon 1s ease infinite;
+  -moz-animation: neon 1s ease infinite;
+  -webkit-animation: neon 1s ease infinite;
+}
+@keyframes title {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw .1vw #806914;
+    color: #FED128;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5vw .1vw #40340A;
+    color: #806914;
+  }
+}
+/* Padding & Margin */
+* {margin: 0; padding: 0;}
+pre, blockquote, ul, ol, p, table{
+    margin: 1rem 0;
+}
+
+h1, h2{margin-top: 2rem; line-height: 2rem;}
+h3, h4, h5, h6{margin-top: 1rem;}
+
+
+/* Links  */
+a, a:visited {
+    color: #800080;
+    text-decoration: underline;
+}
+
+a:hover, a:focus, a:active {
+    color: #eb5ced;
+}
+
+/* Code */
+pre {
+    font-family: "Courier New";
+    padding: .5rem;
+    background-color: #333;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    font-size: 0.9rem;
+    color: #EEE;
+    overflow-x: auto;
+}
+
+.org-keyword{
+    color: #01ff70;
+}
+
+.org-rainbow-delimiters-depth-1{
+    color: #eb5ced;
+}
+
+.org-rainbow-delimiters-depth-2{
+    color: #01ff70;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 3px solid #01ff70;
+    padding-left: 1rem;
+}
+
+li{
+    list-style-position: inside;
+}
+
+/* Tags */
+.tag{
+    margin-top: 0.5rem;
+    display: block;
+    color: white;
+    font-size: var(--font-size-xsmall);
+}
+
+.tag > span{
+		font-weight: 400;
+    font-size: 0.8rem;
+    background-color: #444;
+    text-transform: uppercase;
+    border-radius: 2px;
+    width: fit-content;
+    height: auto;
+    padding: 1px 5px;
+}
+
+/* Keywords */
+.todo{
+    color: #eb5ced;
+}
+
+.done{
+    color: #444;
+}
+
+/* Overflows */
+.outline-text-2, .outline-text-3, .outline-text-4{
+	  max-width: 100%;
+	  overflow-x: auto;
+}
+
+/* Table */
+tr:nth-child(even) {
+    background-color: #333;
+}
+
+th, td{
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+/*]]>*/-->
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">AI in Parasolid</h1>
+<div class="neon">
+
+Literal HTML code for export
+
+
+\begin{equation} % Creates an equation environment and is compiled as math
+    \gamma^2+\theta^2=\omega^2
+\end{equation}
+<p>
+Normal text here:
+Discovered in 1905 by Albert Einstein. In natural units (\(c\) = 1), the formula expresses the identity
+</p>
+
+<blockquote>
+<p>
+In physics, the mass-energy equivalence is stated
+by the equation \(E=mc^2\), discovered in 1905 by Albert Einstein.
+</p>
+</blockquote>
+
+<p>
+\[  \frac{1}{2} \]
+</p>
+
+<p>
+Further text to add here to measure indentation and other factors to gauge how well this stuff is working&#x2026;
+Well let&rsquo;s see how this page looks. Hmmmmm&#x2026;..
+</p>
+
+<div id="outline-container-orgbb33579" class="outline-2">
+<h2 id="orgbb33579">new list</h2>
+</div>
+<div id="outline-container-org06c77af" class="outline-2">
+<h2 id="org06c77af">more stuff</h2>
+<div class="outline-text-2" id="text-org06c77af">
+</div>
+<div id="outline-container-org0097871" class="outline-3">
+<h3 id="org0097871">here is a nest</h3>
+<div class="outline-text-3" id="text-org0097871">
+</div>
+<div id="outline-container-org1391ca1" class="outline-4">
+<h4 id="org1391ca1">and more nesting</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb5236cb" class="outline-2">
+<h2 id="orgb5236cb">ahahaha</h2>
+<div class="outline-text-2" id="text-orgb5236cb">
+<p>
+Finally finally back to normal!!
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Carlo Pecora</p>
+<p class="date">Created: 2021-09-07 Tue 18:03</p>
+</div>
+</body>
+</html>

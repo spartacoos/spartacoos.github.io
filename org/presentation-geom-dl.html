@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Presentation Geom Dl</title>
-<meta name="author" content="Carlo Pecora"/>
+<title>AI in Parasolid</title>
+<meta name="author" content="Carlo Grisafi"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -15,61 +15,216 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Presentation Geom Dl</h1><h2 class="author">Carlo Pecora</h2><p class="date">Created: 2021-09-10 Fri 09:47</p>
-</section>
-<section id="table-of-contents-section">
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#/slide-1">1. AI vs ML vs DL</a>
-<ul>
-<li><a href="#/slide-1-1">1.1. AI</a>
-<ul>
-<li><a href="#/slide-1-1-1">1.1.1. Classical AI -&gt; logic</a></li>
-<li><a href="#/slide-1-1-2">1.1.2. Modern AI -&gt; neuro-inspired mathematical models + lots of GPUs</a></li>
-</ul>
-</li>
-<li><a href="#/slide-1-2">1.2. ML</a>
-<ul>
-<li><a href="#/slide-1-2-1">1.2.1. Classical ML -&gt; probability and statistics</a></li>
-<li><a href="#/slide-1-2-2">1.2.2. Modern ML -&gt; Classical ML + fancier new maths (i.e signal processing, fast clustering, etc)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
+<h1 class="title">AI in Parasolid</h1><h2 class="author">Carlo Grisafi</h2><p class="date">Created: 2021-09-15 Wed 12:44</p>
 </section>
 
 <section>
 <section id="slide-1">
-<h2 id="1"><span class="section-number-2">1.</span> AI vs ML vs DL</h2>
+<h2 id="1"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 </div>
 </section>
 <section id="slide-1-1">
-<h3 id="1-1"><span class="section-number-3">1.1.</span> AI</h3>
-<div class="outline-text-3" id="text-1-1">
+<h3 id="1-1"><span class="section-number-3">1.1.</span> Presentation structure</h3>
+<ul>
+<li>General uses of Deep Learning</li>
+<li>Introduction to Geometric Deep Learning</li>
+<li>Questions/discussion</li>
+<li>Jupyter notebook</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-2">
+<h2 id="2"><span class="section-number-2">2.</span> General uses of Deep Learning</h2>
+<div class="outline-text-2" id="text-2">
 </div>
 </section>
-<section id="slide-1-1-1">
-<h4 id="1-1-1"><span class="section-number-4">1.1.1.</span> Classical AI -&gt; logic</h4>
-</section>
-<section id="slide-1-1-2">
-<h4 id="1-1-2"><span class="section-number-4">1.1.2.</span> Modern AI -&gt; neuro-inspired mathematical models + lots of GPUs</h4>
-</section>
-<section id="slide-1-2">
-<h3 id="1-2"><span class="section-number-3">1.2.</span> ML</h3>
-<div class="outline-text-3" id="text-1-2">
+<section id="slide-2-1">
+<h3 id="2-1"><span class="section-number-3">2.1.</span> Computer Vision</h3>
+<div class="outline-text-3" id="text-2-1">
 </div>
 </section>
-<section id="slide-1-2-1">
-<h4 id="1-2-1"><span class="section-number-4">1.2.1.</span> Classical ML -&gt; probability and statistics</h4>
+<section id="slide-2-1-1">
+<h4 id="2-1-1"><span class="section-number-4">2.1.1.</span> classification</h4>
+
+<div id="org7145bd2" class="figure">
+<p><img src="./img/img-classification.png" alt="img-classification.png" />
+</p>
+</div>
 </section>
-<section id="slide-1-2-2">
-<h4 id="1-2-2"><span class="section-number-4">1.2.2.</span> Modern ML -&gt; Classical ML + fancier new maths (i.e signal processing, fast clustering, etc)</h4>
+<section id="slide-2-1-2">
+<h4 id="2-1-2"><span class="section-number-4">2.1.2.</span> Shift-invariance (problem)</h4>
+
+<div id="org48774f2" class="figure">
+<p><img src="./img/flat-image.png" alt="flat-image.png" />
+</p>
+</div>
+</section>
+<section id="slide-2-1-3">
+<h4 id="2-1-3"><span class="section-number-4">2.1.3.</span> Convolutions (solution)</h4>
+
+<div id="orgb253917" class="figure">
+<p><img src="./img/conv2.png" alt="conv2.png" />
+</p>
+</div>
+</section>
+<section id="slide-2-2">
+<h3 id="2-2"><span class="section-number-3">2.2.</span> Natural Langugae Processing</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+</section>
+<section id="slide-2-2-1">
+<h4 id="2-2-1"><span class="section-number-4">2.2.1.</span> Knowledge Graph Embeddings (KGEs)</h4>
+
+<div id="orga1f59b7" class="figure">
+<p><img src="./img/natural-lang.png" alt="natural-lang.png" />
+</p>
+</div>
+</section>
+<section id="slide-2-2-2">
+<h4 id="2-2-2"><span class="section-number-4">2.2.2.</span> Long short-term memory (LSTM)</h4>
+
+<div id="org643d6ca" class="figure">
+<p><img src="./img/pred.png" alt="pred.png" />
+</p>
+</div>
+</section>
+<section id="slide-2-2-3">
+<h4 id="2-2-3"><span class="section-number-4">2.2.3.</span> Bidirectional Encoder Representations from Transformers (BERT)</h4>
+
+<div id="org26bf912" class="figure">
+<p><img src="./img/google.png" alt="google.png" />
+</p>
+</div>
+</section>
+<section id="slide-2-2-4">
+<h4 id="2-2-4"><span class="section-number-4">2.2.4.</span> Generative Pre-trained Transformer (GPT)</h4>
+
+<div id="org737ee89" class="figure">
+<p><img src="./img/gpt.png" alt="gpt.png" />
+</p>
+</div>
+</section>
+<section id="slide-2-3">
+<h3 id="2-3"><span class="section-number-3">2.3.</span> Robotics</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+</section>
+<section id="slide-2-3-1">
+<h4 id="2-3-1"><span class="section-number-4">2.3.1.</span> Path planning</h4>
+
+<div id="org4014868" class="figure">
+<p><img src="./img/path.png" alt="path.png" />
+</p>
+</div>
+</section>
+<section id="slide-2-3-2">
+<h4 id="2-3-2"><span class="section-number-4">2.3.2.</span> 3D Scene understanding</h4>
+
+<div id="orgdee58b6" class="figure">
+<p><img src="./img/scene.jpg" alt="scene.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-2-4">
+<h3 id="2-4"><span class="section-number-3">2.4.</span> Reinforcement learning</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+</section>
+<section id="slide-2-4-1">
+<h4 id="2-4-1"><span class="section-number-4">2.4.1.</span> discrete/continous optimization problems in control theory</h4>
+
+<div id="orgedcd4c4" class="figure">
+<p><img src="./img/agent.png" alt="agent.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-3">
+<h2 id="3"><span class="section-number-2">3.</span> Introduction to Geometric Deep Learning</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+</section>
+<section id="slide-3-1">
+<h3 id="3-1"><span class="section-number-3">3.1.</span> What do we mean by &ldquo;Geometric&rdquo;?</h3>
+<ul>
+<li>In the context of Felix Klein&rsquo;s Erlangen program we can define the different geometries as the invariants or properties preserved under a class of symmetrical transformations (eucledian &lt; affine &lt; projective)</li>
+
+</ul>
+</section>
+<section id="slide-3-2">
+<h3 id="3-2"><span class="section-number-3">3.2.</span> Formalised using the language of group theory</h3>
+<p>
+Once you defined the symmetry group it becomes clear what geometry is and you immediately have certain structures which are preserved
+</p>
+</section>
+<section id="slide-3-3">
+<h3 id="3-3"><span class="section-number-3">3.3.</span> Example:</h3>
+
+<div id="org708ce22" class="figure">
+<p><img src="./img/groups.png" alt="groups.png" />
+</p>
+</div>
+</section>
+<section id="slide-3-4">
+<h3 id="3-4"><span class="section-number-3">3.4.</span> Eucledian Deep Learning</h3>
+<div class="outline-text-3" id="text-3-4">
+</div>
+</section>
+<section id="slide-3-4-1">
+<h4 id="3-4-1"><span class="section-number-4">3.4.1.</span> Multilayer perceptrons as universal function approximators</h4>
+
+<div id="org1818e89" class="figure">
+<p><img src="./img/approx.png" alt="approx.png" />
+</p>
+</div>
+</section>
+<section id="slide-3-4-2">
+<h4 id="3-4-2"><span class="section-number-4">3.4.2.</span> CNNs as a paradigm to add translation invariance to Multilayer perceptrons</h4>
+<div class="outline-text-4" id="text-3-4-2">
+</div>
+<ol class="org-ol">
+<li><a id="3-4-2-1"></a>Group-CNNS give MP Translation + Rotation invariance<br /></li>
+<li><a id="3-4-2-2"></a>Result: networks that build layers of abstraction (edges, eyes, humans)<br />
+<div id="org5cab9df" class="figure">
+<p><img src="./img/conv-f.jpeg" alt="conv-f.jpeg" />
+</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="slide-3-5">
+<h3 id="3-5"><span class="section-number-3">3.5.</span> Non-Eucledian Deep Learning</h3>
+<div class="outline-text-3" id="text-3-5">
+</div>
+</section>
+<section id="slide-3-5-1">
+<h4 id="3-5-1"><span class="section-number-4">3.5.1.</span> Graph Neural Networks (GNNs): retain permutation invariance, choice of function is important</h4>
+
+<div id="orgde553b3" class="figure">
+<p><img src="./img/gnn_permutation.png" alt="gnn_permutation.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>This shows a very simple case of permutation invariant operations</p>
+</div>
+</section>
+<section id="slide-3-5-2">
+<h4 id="3-5-2"><span class="section-number-4">3.5.2.</span> Similar to graph isomorphisim</h4>
+
+<div id="org6753c59" class="figure">
+<p><img src="./img/isomor.png" alt="isomor.png" />
+</p>
+</div>
+</section>
+<section id="slide-3-5-3">
+<h4 id="3-5-3"><span class="section-number-4">3.5.3.</span> Gauge CNNs (Non-manifold convolutional neural nets):</h4>
+
+<div id="org955c45b" class="figure">
+<p><img src="./img/gauge.png" alt="gauge.png" />
+</p>
+</div>
 </section>
 </section>
 </div>
