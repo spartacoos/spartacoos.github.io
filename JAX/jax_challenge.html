@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-01 Wed 12:35 -->
+<!-- 2021-12-01 Wed 23:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>27 Days of JAX!</title>
@@ -197,81 +197,58 @@ img{
 }
 /*]]>*/-->
 </style>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
 <h1 class="title">27 Days of JAX!</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgfd99437">Day 1: Whetting our apetite for performance!</a></li>
+</ul>
+</div>
+</div>
 <div class="neon">
 
-Literal HTML code for export
-
-
-\begin{equation} % Creates an equation environment and is compiled as math
-    \gamma^2+\theta^2=\omega^2
-\end{equation}
 <p>
-Normal text here:
-Discovered in 1905 by Albert Einstein. In natural units (\(c\) = 1), the formula expresses the identity
+I’ve been hearing all this talk in ML circles about how <b><b>Differentiable Programming</b></b> is supposed to be the next big thing that will supersede our current workflows. Still, me being the sceptic that I am, I stayed away from it since, from what I understood, it’s meant to be mainly a performance boost for matrix computations which can speed up training, but since this isn’t critical to my projects or research, it didn’t seem worth the hassle. Besides, these days it feels like every new paradigm is supposedly able to do magic, at least according to those who evangelize it. However, after letting the curious side of me look into some of the code examples for Taichi (a differentiable programming language compatible with Python), it seemed like there were additional benefits to this technology other than just raw performance increase. Then yesterday, I stumbled upon this tweet:
+</p>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">In an effort to invite everyone to spend more time playing w JAX:<br><br>Announcing <a href="https://twitter.com/hashtag/27DaysOfJAX?src=hash&amp;ref_src=twsrc%5Etfw">#27DaysOfJAX</a>! 🏎🔥<br><br>Do:<br><br>- 📚 Spend some time w JAX<br>- ✍️ Blog about it or share your code ex with us<br>- 🎤 Tag <a href="https://twitter.com/weights_biases?ref_src=twsrc%5Etfw">@weights_biases</a>, <a href="https://twitter.com/cgarciae88?ref_src=twsrc%5Etfw">@cgarciae88</a>, or myself<br><br>Best works will receive some W&amp;B Swag (&amp; more)! 🍵</p>&mdash; Sanyam Bhutani (@bhutanisanyam1) <a href="https://twitter.com/bhutanisanyam1/status/1465650810474287112?ref_src=twsrc%5Etfw">November 30, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>
+So, I decided to figure out what differentiable programming is all about and whether its benefits are good (for my use cases) and if there are any drawbacks (I assume many apriori).
+Thus I&rsquo;m starting a blog mini-series where I document my journey with JAX.
 </p>
 
 <blockquote>
 <p>
-In physics, the mass-energy equivalence is stated
-by the equation \(E=mc^2\), discovered in 1905 by Albert Einstein.
+ML workloads often consist of large, accelerable, pure-and statically-composed subroutines orchestrated by dynamic
+logic. - Matthew Johnson - [Google Brain]
 </p>
 </blockquote>
 
+<div id="outline-container-orgfd99437" class="outline-2">
+<h2 id="orgfd99437">Day 1: Whetting our apetite for performance!</h2>
+<div class="outline-text-2" id="text-orgfd99437">
 <p>
-\[  \frac{1}{2} \]
+First, we want to activate our conda environment and then install jax:
+</p>
+<pre class="example" id="orgf1d23f7">
+conda install -c conda-forge jax
+</pre>
+<p>
+Now, let&rsquo;s see what is the performance compared to numpy on a simple task:
+</p>
+<img src="./carbon.svg" alt="Carbon code" />
+
+<p>
+Okay! It seems like that part is clear enough; JAX is straight-up blowing regular old Numpy out of the water.
 </p>
 
 <p>
-Further text to add here to measure indentation and other factors to gauge how well this stuff is working&#x2026;
-Well let&rsquo;s see how this page looks. Hmmmmm&#x2026;..
-</p>
-
-<div id="outline-container-org703427a" class="outline-2">
-<h2 id="org703427a">new list</h2>
-</div>
-<div id="outline-container-orgbf5eda0" class="outline-2">
-<h2 id="orgbf5eda0">more stuff</h2>
-<div class="outline-text-2" id="text-orgbf5eda0">
-</div>
-<div id="outline-container-orgfd90145" class="outline-3">
-<h3 id="orgfd90145">here is a nest</h3>
-<div class="outline-text-3" id="text-orgfd90145">
-</div>
-<div id="outline-container-orgc06d3bf" class="outline-4">
-<h4 id="orgc06d3bf">and more nesting</h4>
-</div>
-</div>
-</div>
-<div id="outline-container-org03b52b6" class="outline-2">
-<h2 id="org03b52b6">ahahaha</h2>
-<div class="outline-text-2" id="text-org03b52b6">
-<p>
-Finally finally back to normal!!
+<b><b>Tomorrow</b></b>: how to vectorize scalar operations?
 </p>
 
 </div>
@@ -280,7 +257,7 @@ Finally finally back to normal!!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Carlo Pecora</p>
-<p class="date">Created: 2021-12-01 Wed 12:35</p>
+<p class="date">Created: 2021-12-01 Wed 23:18</p>
 </div>
 </body>
 </html>
