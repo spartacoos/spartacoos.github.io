@@ -1,0 +1,3 @@
+[submodule "Software/artificially-games"]
+	path = Software/artificially-games
+	url = git@github.com:spartacoos/artificially-games.git
