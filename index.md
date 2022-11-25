@@ -6,6 +6,7 @@
 ### Blogs / Essays / Articles
 
 #### Software
+- [La Vieja (Tic Tac Toe)](https://spartacoos.github.io/Software/la-vieja.html)
 - [Test blog (empty)](https://spartacoos.github.io/org/presentation.html)
 - [27 Days of JAX](https://spartacoos.github.io/Software/JAX/jax_challenge.html)
 
