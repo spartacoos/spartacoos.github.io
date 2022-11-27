@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'VT323';
+    src: url('VT323-Regular.eot');
+    src: url('VT323-Regular.eot?#iefix') format('embedded-opentype'),
+        url('VT323-Regular.woff2') format('woff2'),
+        url('VT323-Regular.woff') format('woff'),
+        url('VT323-Regular.ttf') format('truetype'),
+        url('VT323-Regular.svg#VT323-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik Microbe';
+    src: url('RubikMicrobe-Regular.eot');
+    src: url('RubikMicrobe-Regular.eot?#iefix') format('embedded-opentype'),
+        url('RubikMicrobe-Regular.woff2') format('woff2'),
+        url('RubikMicrobe-Regular.woff') format('woff'),
+        url('RubikMicrobe-Regular.ttf') format('truetype'),
+        url('RubikMicrobe-Regular.svg#RubikMicrobe-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Audiowide';
+    src: url('Audiowide-Regular.eot');
+    src: url('Audiowide-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Audiowide-Regular.woff2') format('woff2'),
+        url('Audiowide-Regular.woff') format('woff'),
+        url('Audiowide-Regular.ttf') format('truetype'),
+        url('Audiowide-Regular.svg#Audiowide-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bungee Shade';
+    src: url('BungeeShade-Regular.eot');
+    src: url('BungeeShade-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BungeeShade-Regular.woff2') format('woff2'),
+        url('BungeeShade-Regular.woff') format('woff'),
+        url('BungeeShade-Regular.ttf') format('truetype'),
+        url('BungeeShade-Regular.svg#BungeeShade-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -1,0 +1,250 @@
+/* Base */
+/**/
+/* light-sky-purple: #9877b6
+/* dark-sky-purple: ##855ea6*/
+/*  neon-sky-purple: #9460bf
+ */
+@font-face {
+    font-family: 'VT323';
+    src: url('./fonts/VT323-Regular.eot');
+    src: url('./fonts/VT323-Regular.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/VT323-Regular.woff2') format('woff2'),
+        url('./fonts/VT323-Regular.woff') format('woff'),
+        url('./fonts/VT323-Regular.ttf') format('truetype'),
+        url('./fonts/VT323-Regular.svg#VT323-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik Microbe';
+    src: url('./fonts/RubikMicrobe-Regular.eot');
+    src: url('./fonts/RubikMicrobe-Regular.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/RubikMicrobe-Regular.woff2') format('woff2'),
+        url('./fonts/RubikMicrobe-Regular.woff') format('woff'),
+        url('./fonts/RubikMicrobe-Regular.ttf') format('truetype'),
+        url('./fonts/RubikMicrobe-Regular.svg#RubikMicrobe-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Audiowide';
+    src: url('./fonts/Audiowide-Regular.eot');
+    src: url('./fonts/Audiowide-Regular.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/Audiowide-Regular.woff2') format('woff2'),
+        url('./fonts/Audiowide-Regular.woff') format('woff'),
+        url('./fonts/Audiowide-Regular.ttf') format('truetype'),
+        url('./fonts/Audiowide-Regular.svg#Audiowide-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bungee Shade';
+    src: url('./fonts/BungeeShade-Regular.eot');
+    src: url('./fonts/BungeeShade-Regular.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/BungeeShade-Regular.woff2') format('woff2'),
+        url('./fonts/BungeeShade-Regular.woff') format('woff'),
+        url('./fonts/BungeeShade-Regular.ttf') format('truetype'),
+        url('./fonts/BungeeShade-Regular.svg#BungeeShade-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+html,
+
+
+body {
+
+  background-color: #634f70;/*#222;*/
+    min-height: 100%;#800080
+    line-height: 1.5;
+}
+
+body {
+    color: #bfb9c6;
+    font-family: "VT323";/*"Courier New"*/
+}
+
+::selection {
+    background-color:  #AC609A;
+    color: white;
+}
+
+/* Responsive content positioning */
+@media only screen and (min-width: 1020px) /* Large scree
+ns */
+{
+    body{
+        padding: 10vh 25vw;
+    }
+}
+
+@media only screen and (max-width: 1020px) and (min-width
+: 750px) /* Small screens */
+{
+    body{
+        padding: 5vh 10vw;
+    }
+}
+
+@media only screen and (max-width: 750px) /* Small screen
+s */
+{
+    body{
+        padding: 2vh 5vw;
+    }
+}
+
+/* Headers */
+h1{font-size: 2.5rem;
+ font-family: "VT323";
+  }
+h2{font-size: 1.7rem;
+ font-family: "VT323";
+  }
+h1 > .subtitle, h3, h4, h5, h6{font-size: 1.3rem;
+ font-family: "VT323";
+
+}
+
+.title{
+  font-family:"Audiowide"; /* "Andale Mono"; */ /* neon; */
+  color: "#523770"; /* #292138; *//* #855ea6; *//*#984fc9;*//*#aa3e90;*/
+  font-size: 9vw;
+  line-height: 9vw;
+  text-shadow: 0 0 4vw #806292;/*#c90af4;*//*#806292;*/
+}
+
+.title {
+  animation: neon 1s ease infinite;
+  -moz-animation: neon 1s ease infinite;
+  -webkit-animation: neon 1s ease infinite;
+}
+@keyframes title {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #9877b6, 0 0 3vw #9877b6, 0 0 10
+vw #9877b6, 0 0 10vw #9877b6, 0 0 .4vw #FED128, .5vw .5vw
+ .1vw #806914;
+    color: #FED128;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0
+ 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5v
+w .1vw #40340A;
+    color: #806914;
+  }
+}
+/* Padding & Margin */
+* {margin: 0; padding: 0;}
+pre, blockquote, ul, ol, p, table{
+    margin: 1rem 0;
+}
+
+h1, h2{margin-top: 2rem; line-height: 2rem;}
+h3, h4, h5, h6{margin-top: 1rem;}
+
+
+/* Links  */
+a, a:visited {
+    color: #855ea6;
+    text-decoration: underline;
+}
+
+a:hover, a:focus, a:active {
+    color: #9460bf;
+}
+
+/* Code */
+pre {
+  font-family: "Courier New";
+    padding: .5rem;
+    background-color: #333;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    font-size: 0.9rem;
+    color: #EEE;
+    overflow-x: auto;
+}
+
+.org-keyword{
+    color: #292138;
+}
+
+.org-rainbow-delimiters-depth-1{
+    color: #AC609A;
+}
+
+.org-rainbow-delimiters-depth-2{
+    color: #292138;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 3px solid #292138;
+    padding-left: 1rem;
+}
+
+li{
+    list-style-position: inside;
+}
+
+/* Tags */
+.tag{
+    margin-top: 0.5rem;
+    display: block;
+    color: white;
+    font-size: var(--font-size-xsmall);
+}
+
+.tag > span{
+                font-weight: 400;
+    font-size: 0.8rem;
+    background-color: #444;
+    text-transform: uppercase;
+    border-radius: 2px;
+    width: fit-content;
+    height: auto;
+    padding: 1px 5px;
+}
+
+/* Keywords */
+.todo{
+    color: #AC609A;
+}
+
+.done{
+    color: #444;
+}
+
+/* Overflows */
+.outline-text-2, .outline-text-3, .outline-text-4{
+          max-width: 100%;
+          overflow-x: auto;
+}
+
+/* Table */
+tr:nth-child(even) {
+    background-color: #333;
+}
+
+th, td{
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+</style>

@@ -3,13 +3,34 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-11-25 Fri 19:38 -->
+<!-- 2022-11-27 Sun 23:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>La Vieja</title>
 <meta name="author" content="Carlo Pecora" />
 <meta name="generator" content="Org Mode" />
-<link rel='stylesheet' type='text/css' href='./new_neon.css'/>
+<link rel='stylesheet' type='text/css' href='./pale.css'/>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
@@ -18,7 +39,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge9d1f60">Game AI (MiniMax)</a></li>
+<li><a href="#org96e3b50">Game AI (MiniMax)</a></li>
 </ul>
 </div>
 </div>
@@ -38,15 +59,35 @@ The oldest game there is&#x2026;
 </blockquote>
 
 
-<div id="outline-container-orge9d1f60" class="outline-2">
-<h2 id="orge9d1f60">Game AI (MiniMax)</h2>
-<div class="outline-text-2" id="text-orge9d1f60">
+<div id="outline-container-org96e3b50" class="outline-2">
+<h2 id="org96e3b50">Game AI (MiniMax)</h2>
+<div class="outline-text-2" id="text-org96e3b50">
 <p>
-First
+\[
+    v_i=\max _{a_i} \min _{a-i} v_i\left(a_i, a-i\right)
+    \]
 </p>
-<pre class="example" id="org3a49fef">
+
+<p>
+Where
+</p>
+<ul class="org-ul">
+<li>i	=	index of the player of interest</li>
+<li>-i	=	denotes all other players except player i</li>
+<li>a<sub>i</sub> =	action taken by player i</li>
+<li>a-i	=	actions taken by all other players</li>
+<li>v<sub>i</sub> =	value function of player i</li>
+</ul>
+<pre class="example" id="orgebd8c36">
 code
 </pre>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">func</span><span style="color: #51afef;">(){</span>
+        <span style="color: #51afef;">return</span> <span style="color: #da8548; font-weight: bold;">2</span>;
+    <span style="color: #51afef;">}</span>
+</pre>
+</div>
 <p>
 Now here is a link to the <a href="https://spartacoos.github.io/Software/artificially-games/the-old/grid/web/index.html">live game</a> that you can try out.
 </p>
@@ -60,7 +101,7 @@ Now here is a link to the <a href="https://spartacoos.github.io/Software/artific
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Carlo Pecora</p>
-<p class="date">Created: 2022-11-25 Fri 19:38</p>
+<p class="date">Created: 2022-11-27 Sun 23:08</p>
 </div>
 </body>
 </html>

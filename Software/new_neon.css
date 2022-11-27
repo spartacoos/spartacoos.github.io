@@ -72,8 +72,8 @@ h1 > .subtitle, h3, h4, h5, h6{font-size: 1.3rem;
 @keyframes title {
   0%,
   100% {
-    text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10
-vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw
+    text-shadow: 0 0 1vw #C14469, 0 0 3vw #C14469, 0 0 10
+vw #C14469, 0 0 10vw #C14469, 0 0 .4vw #FED128, .5vw .5vw
  .1vw #806914;
     color: #FED128;
   }
@@ -117,7 +117,7 @@ pre {
 }
 
 .org-keyword{
-    color: #01ff70;
+    color: #58386e;
 }
 
 .org-rainbow-delimiters-depth-1{
@@ -125,12 +125,12 @@ pre {
 }
 
 .org-rainbow-delimiters-depth-2{
-    color: #01ff70;
+    color: #58386e;
 }
 
 /* Blockquotes */
 blockquote {
-    border-left: 3px solid #01ff70;
+    border-left: 3px solid #58386e;
     padding-left: 1rem;
 }
 
