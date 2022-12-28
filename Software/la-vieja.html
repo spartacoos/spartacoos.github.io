@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-11-27 Sun 23:08 -->
+<!-- 2022-12-28 Wed 12:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>La Vieja</title>
@@ -39,14 +39,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org96e3b50">Game AI (MiniMax)</a></li>
+<li><a href="#org78b1430">Game AI (MiniMax)</a></li>
 </ul>
 </div>
 </div>
 <div class="neon.css">
 
 <p>
-A <b><b>simple</b></b> game using C/C++ and WebAssembly.
+A <b><b>simple</b></b> yet unbeatable game of Tic-Tac-Toe using C++, a little math and WebAssembly.
 </p>
 
 <blockquote>
@@ -59,9 +59,25 @@ The oldest game there is&#x2026;
 </blockquote>
 
 
-<div id="outline-container-org96e3b50" class="outline-2">
-<h2 id="org96e3b50">Game AI (MiniMax)</h2>
-<div class="outline-text-2" id="text-org96e3b50">
+<div id="outline-container-org78b1430" class="outline-2">
+<h2 id="org78b1430">Game AI (MiniMax)</h2>
+<div class="outline-text-2" id="text-org78b1430">
+<p>
+John Von Neumann 🇭🇺 was a mathematician, computer scientist, and philosopher who made significant contributions to a wide range of fields, including game theory, computer science, and quantum mechanics.
+</p>
+
+<p>
+Game theory: a branch of mathematics that deals with the study of strategic decision-making, and it is used to analyze situations in which multiple actors make decisions that affect each other&rsquo;s outcomes.
+</p>
+
+<p>
+In the 1950s, John used game-theoretic principles to develop algorithms such as the minimax algorithm, which is a decision-making strategy used in game theory to minimize the maximum loss that a player can incur in a two-player, zero-sum game in which one player&rsquo;s gain is the other player&rsquo;s loss.
+</p>
+
+<p>
+One of the key features of the minimax algorithm is that it assumes that the other player is rational and will always choose the strategy that is most beneficial to them. The algorithm works by considering all possible moves that a player could make, and then calculating the maximum loss that could result from each move. The player then chooses the move that minimizes the maximum loss, hence the name &ldquo;minimax.&rdquo;
+</p>
+
 <p>
 \[
     v_i=\max _{a_i} \min _{a-i} v_i\left(a_i, a-i\right)
@@ -78,20 +94,96 @@ Where
 <li>a-i	=	actions taken by all other players</li>
 <li>v<sub>i</sub> =	value function of player i</li>
 </ul>
-<pre class="example" id="orgebd8c36">
-code
-</pre>
+
+<p>
+So&#x2026;what does this have to do with playing an optimal game of tic-tac-toe? It turns out that we can represent tic-tac-toe as a two-player zero-sum game which means that we can use the algorithm above
+to calculate an optimal move, thus, our game &ldquo;AI&rdquo; (if we can even call it that) is born.
+</p>
+
+
+
+
+<p>
+Here, I&rsquo;ll present the relevant bits for the game, the full code can be found <a href="https://github.com/spartacoos/artificially-games/tree/main/the-old">here</a>. First, we represent each possible state of our board with an enum:
+</p>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">func</span><span style="color: #51afef;">(){</span>
-        <span style="color: #51afef;">return</span> <span style="color: #da8548; font-weight: bold;">2</span>;
+<pre class="src src-C"><span style="color: #51afef;">enum</span> <span style="color: #ECBE7B;">class</span> <span style="color: #ECBE7B;">SquareState</span> <span style="color: #51afef;">{</span>
+        Empty,
+        Circle,
+        Cross
+<span style="color: #51afef;">}</span>;
+</pre>
+</div>
+
+<p>
+Once we can represent our state, we can represent groups of states with an array (i.e. a 2D 3x3 array of SquareState). Each winning rule for the game can then be encoded as a bit-sequence that
+corresponds to the locations in the grid that a player needs to have filled to have won the game, e.g a horizontal line, vertical line or diagonal line in any of the valid combinations:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ECBE7B;">WinningStates</span> <span style="color: #dcaeea;">WinStates</span><span style="color: #51afef;">[</span><span style="color: #da8548; font-weight: bold;">8</span><span style="color: #51afef;">]</span> = <span style="color: #51afef;">{</span>  <span style="color: #5B6268;">//</span><span style="color: #5B6268;">there are  8 different conditions that the board can be in where somebody has won</span>
+    <span style="color: #c678dd;">{</span>std::bitset&lt;<span style="color: #a9a1e1;">BOARD_SIZE</span>&gt;<span style="color: #98be65;">(</span>std::string<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"100010001"</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>, std::string<span style="color: #98be65;">(</span><span style="color: #98be65;">"diagonal (left-to-right) #1"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span>std::bitset&lt;<span style="color: #a9a1e1;">BOARD_SIZE</span>&gt;<span style="color: #98be65;">(</span>std::string<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"100100100"</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>, std::string<span style="color: #98be65;">(</span><span style="color: #98be65;">"vertical col #1"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span>std::bitset&lt;<span style="color: #a9a1e1;">BOARD_SIZE</span>&gt;<span style="color: #98be65;">(</span>std::string<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"010010010"</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>, std::string<span style="color: #98be65;">(</span><span style="color: #98be65;">"vertical col #2"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span>std::bitset&lt;<span style="color: #a9a1e1;">BOARD_SIZE</span>&gt;<span style="color: #98be65;">(</span>std::string<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"001001001"</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>, std::string<span style="color: #98be65;">(</span><span style="color: #98be65;">"vertical col #3"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span>std::bitset&lt;<span style="color: #a9a1e1;">BOARD_SIZE</span>&gt;<span style="color: #98be65;">(</span>std::string<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"111000000"</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>, std::string<span style="color: #98be65;">(</span><span style="color: #98be65;">"horizontal row #1"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span>std::bitset&lt;<span style="color: #a9a1e1;">BOARD_SIZE</span>&gt;<span style="color: #98be65;">(</span>std::string<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"000111000"</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>, std::string<span style="color: #98be65;">(</span><span style="color: #98be65;">"horizontal row #2"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span>std::bitset&lt;<span style="color: #a9a1e1;">BOARD_SIZE</span>&gt;<span style="color: #98be65;">(</span>std::string<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"000000111"</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>, std::string<span style="color: #98be65;">(</span><span style="color: #98be65;">"horizontal row #3"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span>std::bitset&lt;<span style="color: #a9a1e1;">BOARD_SIZE</span>&gt;<span style="color: #98be65;">(</span>std::string<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"001010100"</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>, std::string<span style="color: #98be65;">(</span><span style="color: #98be65;">"diagonal (right-to-left) #2"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">}</span>
+<span style="color: #51afef;">}</span>;
+</pre>
+</div>
+
+<p>
+Also, we make something that can hold our board state including things like whose turn it is, for brevity, I won&rsquo;t show that here. Once we have these three pieces, we can put them together in a function like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C">    <span style="color: #ECBE7B;">score</span> <span style="color: #c678dd;">minimax</span><span style="color: #51afef;">(</span><span style="color: #ECBE7B;">BoardState</span> <span style="color: #dcaeea;">board</span>, <span style="color: #ECBE7B;">unsigned</span> <span style="color: #ECBE7B;">int</span> <span style="color: #dcaeea;">depth</span>, <span style="color: #ECBE7B;">bool</span> <span style="color: #dcaeea;">playing_as_maximizer</span><span style="color: #51afef;">){</span>
+        <span style="color: #ECBE7B;">score</span> <span style="color: #dcaeea;">val</span> = heuristic<span style="color: #c678dd;">(</span>board<span style="color: #c678dd;">)</span>;
+        <span style="color: #51afef;">if</span><span style="color: #c678dd;">(</span>val == <span style="color: #da8548; font-weight: bold;">10</span><span style="color: #c678dd;">){</span>
+            <span style="color: #51afef;">return</span> <span style="color: #da8548; font-weight: bold;">10</span>-depth;
+        <span style="color: #c678dd;">}</span>
+        <span style="color: #51afef;">if</span><span style="color: #c678dd;">(</span>val == -<span style="color: #da8548; font-weight: bold;">10</span><span style="color: #c678dd;">){</span>
+            <span style="color: #51afef;">return</span> -<span style="color: #da8548; font-weight: bold;">10</span>+depth;
+        <span style="color: #c678dd;">}</span>
+
+        <span style="color: #51afef;">if</span><span style="color: #c678dd;">(</span>board.is_full<span style="color: #98be65;">()</span><span style="color: #c678dd;">){</span>
+            <span style="color: #51afef;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+        <span style="color: #c678dd;">}</span>
+
+        <span style="color: #51afef;">if</span><span style="color: #c678dd;">(</span>playing_as_maximizer<span style="color: #c678dd;">){</span>
+           <span style="color: #ECBE7B;">score</span> <span style="color: #dcaeea;">value</span> = -<span style="color: #da8548; font-weight: bold;">1000</span>;
+           <span style="color: #51afef;">for</span><span style="color: #98be65;">(</span><span style="color: #51afef;">auto</span> <span style="color: #ECBE7B;">move</span>: board.empty_slots<span style="color: #a9a1e1;">()</span><span style="color: #98be65;">){</span>
+               <span style="color: #51afef;">auto</span> <span style="color: #a9a1e1;">[</span>x,y<span style="color: #a9a1e1;">]</span> = move;
+               <span style="color: #ECBE7B;">BoardState</span> <span style="color: #dcaeea;">child</span> = board;
+               child.grid<span style="color: #a9a1e1;">[</span>x<span style="color: #a9a1e1;">][</span>y<span style="color: #a9a1e1;">]</span> = maximizing_player;
+               value = std::max<span style="color: #a9a1e1;">(</span>value, minimax<span style="color: #51afef;">(</span>child, depth+<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #51afef; font-weight: bold;">!</span>playing_as_maximizer<span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span>;
+           <span style="color: #98be65;">}</span>
+           <span style="color: #51afef;">return</span> value;
+        <span style="color: #c678dd;">}</span> <span style="color: #51afef;">else</span> <span style="color: #c678dd;">{</span>
+           <span style="color: #ECBE7B;">score</span> <span style="color: #dcaeea;">value</span> = <span style="color: #da8548; font-weight: bold;">1000</span>;
+           <span style="color: #51afef;">for</span><span style="color: #98be65;">(</span><span style="color: #51afef;">auto</span> <span style="color: #ECBE7B;">move</span>: board.empty_slots<span style="color: #a9a1e1;">()</span><span style="color: #98be65;">){</span>
+               <span style="color: #51afef;">auto</span> <span style="color: #a9a1e1;">[</span>x,y<span style="color: #a9a1e1;">]</span> = move;
+               <span style="color: #ECBE7B;">BoardState</span> <span style="color: #dcaeea;">child</span> = board;
+               child.grid<span style="color: #a9a1e1;">[</span>x<span style="color: #a9a1e1;">][</span>y<span style="color: #a9a1e1;">]</span> = inverse_player<span style="color: #a9a1e1;">(</span>maximizing_player<span style="color: #a9a1e1;">)</span>;
+               value = std::min<span style="color: #a9a1e1;">(</span>value, minimax<span style="color: #51afef;">(</span>child, depth+<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #51afef; font-weight: bold;">!</span>playing_as_maximizer<span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span>;
+           <span style="color: #98be65;">}</span>
+           <span style="color: #51afef;">return</span> value;
+        <span style="color: #c678dd;">}</span>
     <span style="color: #51afef;">}</span>
 </pre>
 </div>
+
 <p>
-Now here is a link to the <a href="https://spartacoos.github.io/Software/artificially-games/the-old/grid/web/index.html">live game</a> that you can try out.
+The minimax function above is where all the magic happens, it basically implements a version of the equation we saw at the beginning except that we have a &ldquo;base case&rdquo; heuristic used to assign a value to the final configuration of the evaluation of a board state. In this case, there is a natural heuristic which is to simply assign a large negative gain when the other player ends up with a winning combination and a large positive gain when we ended up with a winning combination.
 </p>
-<img src="./images/bitsets.svg" alt="Carbon code" />
+
+
+<p>
+Now that we understand how it all works, you can try out my code implementation as a <a href="https://spartacoos.github.io/Software/artificially-games/the-old/grid/web/index.html">live game</a> that you can play on your browser thanks to WebAssembly.
+</p>
 
 
 
@@ -101,7 +193,7 @@ Now here is a link to the <a href="https://spartacoos.github.io/Software/artific
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Carlo Pecora</p>
-<p class="date">Created: 2022-11-27 Sun 23:08</p>
+<p class="date">Created: 2022-12-28 Wed 12:05</p>
 </div>
 </body>
 </html>
